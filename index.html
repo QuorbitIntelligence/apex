@@ -56,6 +56,29 @@
   .btn-sm{padding:10px 18px;font-size:13.5px;}
   .btn-link{color:var(--text);font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:6px;}
   .btn-link:hover{color:var(--red);}
+  .account-btn{width:38px;height:38px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text);flex:none;}
+  .account-btn:hover{border-color:var(--red);color:var(--red);}
+  .account-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* FLOATING SOCIAL */
+  .float-social{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .float-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -6px rgba(0,0,0,0.65);}
+  .float-btn svg{width:20px;height:20px;fill:#fff;}
+  .float-btn.ig{background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);}
+  .float-btn.fb{background:#1877F2;}
+  .float-btn.wa{position:relative;width:56px;height:56px;background:#25D366;}
+  .float-btn.wa svg{width:27px;height:27px;}
+  .float-btn.wa::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-pulse 2.2s ease-out infinite;z-index:-1;}
+  @keyframes wa-pulse{0%{transform:scale(1);opacity:0.6;}100%{transform:scale(1.9);opacity:0;}}
+
+  /* STORE BUTTONS */
+  .store-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+  .store-btn{display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 18px;}
+  .store-btn:hover{border-color:var(--red);}
+  .store-btn svg{width:24px;height:24px;flex:none;fill:none;stroke:var(--text);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .store-text{display:flex;flex-direction:column;line-height:1.25;text-align:left;}
+  .store-text small{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+  .store-text strong{font-size:14.5px;font-weight:700;color:var(--text);}
 
   /* HERO */
   .hero .row{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;padding-top:64px;padding-bottom:24px;}
@@ -150,6 +173,11 @@
     .feat-grid{grid-template-columns:1fr;}
     .foot-top{grid-template-columns:1fr;}
     .diag-label{font-size:10.5px;}
+    .float-social{right:14px;bottom:14px;gap:10px;}
+    .float-btn{width:40px;height:40px;}
+    .float-btn svg{width:18px;height:18px;}
+    .float-btn.wa{width:50px;height:50px;}
+    .float-btn.wa svg{width:24px;height:24px;}
   }
 </style>
 </head>
@@ -166,6 +194,9 @@
       <a href="#contact" data-i18n="navContact">Contacto</a>
     </div>
     <div class="nav-right">
+      <a class="account-btn" href="#" data-i18n-title="navAccount" title="Crear cuenta" aria-label="Crear cuenta">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c0-3.9 3.4-6.5 7.5-6.5s7.5 2.6 7.5 6.5"/></svg>
+      </a>
       <div class="lang-pill">
         <button class="lang-es" onclick="setLang('es')">ES</button>
         <button class="lang-en" onclick="setLang('en')">EN</button>
@@ -345,6 +376,16 @@
     <h2 data-i18n="ctaTitle">Prepárate para hacer la diferencia.</h2>
     <a class="btn btn-primary" href="#contact" data-i18n="ctaButton">Únete a la lista de espera</a>
     <p class="note" data-i18n="ctaNote">Sin costo por unirte a la lista. Te avisaremos en cuanto Apex esté disponible en tu país.</p>
+    <div class="store-row">
+      <a class="store-btn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M10.5 19h3"/></svg>
+        <span class="store-text"><small data-i18n="storeAvail">Disponible en</small><strong>App Store</strong></span>
+      </a>
+      <a class="store-btn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M4 3.5v17l16-8.5-16-8.5z"/></svg>
+        <span class="store-text"><small data-i18n="storeAvail">Disponible en</small><strong>Google Play</strong></span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -384,10 +425,24 @@
   </div>
 </footer>
 
+<div class="float-social">
+  <a class="float-btn ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="#fff" stroke="none"/></svg>
+  </a>
+  <a class="float-btn fb" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M14.5 21v-7.2h2.4l.36-2.8h-2.76V9.2c0-.8.22-1.36 1.38-1.36h1.48V5.3c-.26-.03-1.14-.1-2.16-.1-2.14 0-3.6 1.3-3.6 3.7v2.1H9.2v2.8h2.4V21h2.9z" fill="#fff"/></svg>
+  </a>
+  <a class="float-btn wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 20 7.7 16.3A7.6 7.6 0 1 1 10.6 19Z"/><path d="M9 9.3c0 3 2.4 5.6 5.6 5.6.5 0 .9-.6.7-1.1l-.5-1.2c-.15-.35-.55-.5-.9-.35l-.9.4a4.6 4.6 0 0 1-2.2-2.2l.4-.9c.15-.35 0-.75-.35-.9l-1.2-.5c-.5-.2-1.1.2-1.1.7z" fill="#fff" stroke="none"/></svg>
+  </a>
+</div>
+
 <script>
 var I18N = {
   es: {
     navHow: "Cómo funciona", navFeatures: "Características", navInsurance: "Seguro médico", navPlans: "Planes", navContact: "Contacto", navCta: "Únete a la lista",
+    navAccount: "Crear cuenta", storeAvail: "Disponible en",
+    waMessage: "Hola, quiero más información sobre la pulsera Apex y sus planes de suscripción.",
     heroKicker: "PULSERA DE EMERGENCIA MÉDICA · COBERTURA GLOBAL",
     heroTitle: "Ayuda médica real, a un toque de distancia.",
     heroSub: "Apex conecta tu emergencia directamente con servicios médicos y tu seguro contratado — con rastreo global, dondequiera que estés.",
@@ -435,6 +490,8 @@ var I18N = {
   },
   en: {
     navHow: "How it works", navFeatures: "Features", navInsurance: "Insurance", navPlans: "Plans", navContact: "Contact", navCta: "Join the waitlist",
+    navAccount: "Sign up", storeAvail: "Available on",
+    waMessage: "Hi, I'd like more information about the Apex bracelet and subscription plans.",
     heroKicker: "MEDICAL EMERGENCY WEARABLE · GLOBAL COVERAGE",
     heroTitle: "Real help, one touch away.",
     heroSub: "Apex connects your emergency directly to medical services and your insurance — with global tracking, wherever you are.",
@@ -488,6 +545,12 @@ function setLang(lang) {
     var key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
+  document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-title');
+    if (dict[key] !== undefined) { el.setAttribute('title', dict[key]); el.setAttribute('aria-label', dict[key]); }
+  });
+  var waFloat = document.getElementById('waFloat');
+  if (waFloat) waFloat.setAttribute('href', 'https://wa.me/525563180762?text=' + encodeURIComponent(dict.waMessage));
   document.querySelectorAll('.lang-es').forEach(function (b) { b.classList.toggle('active', lang === 'es'); });
   document.querySelectorAll('.lang-en').forEach(function (b) { b.classList.toggle('active', lang === 'en'); });
   document.documentElement.setAttribute('lang', lang);
